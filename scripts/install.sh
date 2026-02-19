@@ -4,7 +4,7 @@
 set -euo pipefail
 
 INSTALL_DIR="${HOME}/.local/bin"
-SCRIPT_URL="https://raw.githubusercontent.com/sirknigget/cludo/main/cludo"
+SCRIPT_URL="https://raw.githubusercontent.com/sirknigget/cludo/main/scripts/cludo"
 
 die() {
   echo "Error: $*" >&2
