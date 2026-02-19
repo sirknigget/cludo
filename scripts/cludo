@@ -3,11 +3,16 @@
 # Usage: cludo <describe what you want to do>
 
 if [[ $# -eq 0 ]]; then
-  echo "Usage: cludo <describe what you want to do>"
-  exit 1
+  printf "cludo> "
+  read -r user_prompt
+  if [[ -z "$user_prompt" ]]; then
+    echo "Usage: cludo <describe what you want to do>" >&2
+    echo "       cludo          (interactive — avoids shell issues with special characters)" >&2
+    exit 1
+  fi
+else
+  user_prompt="$*"
 fi
-
-user_prompt="$*"
 full_prompt="You are a shell command assistant for macOS/zsh. The user will describe what they want to do in the terminal. Respond with ONLY the exact command to run—no explanation, no markdown fences, no extra text. Just the raw command on a single line.
 
 User request: ${user_prompt}"
