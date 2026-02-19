@@ -63,6 +63,7 @@ Run it? [y/n/c] (c = copy to clipboard):
 1. Your description is sent to Claude Haiku with a strict system prompt instructing it to return only a raw shell command
 2. cludo strips any markdown formatting from the response
 3. You see the command and choose what to do with it
+4. If a clarification is returned, it is shown and cludo exits
 
 ## License
 
