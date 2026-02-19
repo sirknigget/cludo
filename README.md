@@ -1,5 +1,7 @@
 # cludo
 
+![cludo](cludo.png)
+
 A friendly Claude-superpowered terminal assistant. Describe what you want to do in plain English — cludo generates the shell command and asks before running it.
 
 ## Who is this for?
