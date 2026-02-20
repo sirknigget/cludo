@@ -48,8 +48,8 @@ cdo compress all jpg files in this folder
 If your request contains special shell characters (`>`, `|`, `&`, `!`, etc.), wrap it in double quotes to prevent the shell from interpreting them:
 
 ```bash
-cdo "find files larger than 100mb"
-cdo "show processes using more than 50% cpu"
+cdo "find files > 100mb"
+cdo "list running processes | grep node"
 ```
 
 Alternatively, run `cdo` with no arguments to enter interactive mode — it prompts you for your request directly, so no quoting is needed:
