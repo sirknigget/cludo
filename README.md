@@ -1,4 +1,4 @@
-# cdo
+# cdo - Claude-do
 
 ![cdo](cdo.png)
 
