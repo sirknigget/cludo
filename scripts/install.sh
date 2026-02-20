@@ -4,7 +4,7 @@
 set -euo pipefail
 
 INSTALL_DIR="${HOME}/.local/bin"
-SCRIPT_URL="https://raw.githubusercontent.com/sirknigget/cludo/main/scripts/cludo"
+SCRIPT_URL="https://raw.githubusercontent.com/sirknigget/cdo/main/scripts/cdo"
 
 die() {
   echo "Error: $*" >&2
@@ -15,10 +15,10 @@ die() {
 mkdir -p "$INSTALL_DIR" || die "failed to create directory $INSTALL_DIR"
 
 # Download the script
-curl -fsSL "$SCRIPT_URL" -o "$INSTALL_DIR/cludo" || die "failed to download cludo from $SCRIPT_URL"
+curl -fsSL "$SCRIPT_URL" -o "$INSTALL_DIR/cdo" || die "failed to download cdo from $SCRIPT_URL"
 
 # Make it executable
-chmod +x "$INSTALL_DIR/cludo" || die "failed to make $INSTALL_DIR/cludo executable"
+chmod +x "$INSTALL_DIR/cdo" || die "failed to make $INSTALL_DIR/cdo executable"
 
-echo "cludo installed successfully to $INSTALL_DIR"
+echo "cdo installed successfully to $INSTALL_DIR"
 echo "Make sure $INSTALL_DIR is in your PATH"

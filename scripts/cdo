@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
-# cludo — Claude Haiku terminal command assistant
-# Usage: cludo <describe what you want to do>
+# cdo — Claude Haiku terminal command assistant
+# Usage: cdo <describe what you want to do>
 
 if [[ $# -eq 0 ]]; then
-  printf "cludo> "
+  printf "cdo> "
   read -r user_prompt
   if [[ -z "$user_prompt" ]]; then
-    echo "Usage: cludo <describe what you want to do>" >&2
-    echo "       cludo          (interactive — avoids shell issues with special characters)" >&2
+    echo "Usage: cdo <describe what you want to do>" >&2
+    echo "       cdo          (interactive — avoids shell issues with special characters)" >&2
     exit 1
   fi
 else
@@ -24,7 +24,7 @@ json_schema='{"type":"object","properties":{"command":{"type":"string"},"clarifi
 response=$(claude --model claude-haiku-4-5-20251001 --system-prompt "$system_prompt" --json-schema "$json_schema" --output-format json -p "User request: ${user_prompt}" 2>/dev/null)
 
 if [[ -z "$response" ]]; then
-  echo "cludo: no response returned" >&2
+  echo "cdo: no response returned" >&2
   exit 1
 fi
 
@@ -40,7 +40,7 @@ if [[ -n "$clarification" ]]; then
 fi
 
 if [[ -z "$cmd" ]]; then
-  echo "cludo: could not parse command from response" >&2
+  echo "cdo: could not parse command from response" >&2
   exit 1
 fi
 
