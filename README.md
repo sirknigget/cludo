@@ -33,6 +33,7 @@ This installs the `cdo` script to `~/.local/bin`. Make sure that directory is in
 
 ```
 cdo <describe what you want to do>
+cdo                                   (interactive mode)
 ```
 
 **Examples:**
@@ -42,6 +43,20 @@ cdo find all python files modified in the last week
 cdo show disk usage sorted by size
 cdo kill the process using port 3000
 cdo compress all jpg files in this folder
+```
+
+If your request contains special shell characters (`>`, `|`, `&`, `!`, etc.), wrap it in double quotes to prevent the shell from interpreting them:
+
+```bash
+cdo "find files larger than 100mb"
+cdo "show processes using more than 50% cpu"
+```
+
+Alternatively, run `cdo` with no arguments to enter interactive mode — it prompts you for your request directly, so no quoting is needed:
+
+```
+$ cdo
+cdo> find files larger than 100mb
 ```
 
 cdo will show you the generated command and prompt for confirmation:
