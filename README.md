@@ -16,6 +16,12 @@ cdo is for:
 
 cdo skips the overhead and gets straight to the point.
 
+## Wait, doesn't this already exist?
+
+Apparently not. Every similar tool I found requires a model provider API key — meaning you need a separate paid account and must manage credentials yourself. None of them work with your existing Claude Code subscription out of the box.
+
+I created cdo because despite my best efforts I failed to find a tool that does what I want: a zero-config, no-API-key-needed terminal assistant that just works if you already have Claude Code installed.
+
 ## Prerequisites
 
 - macOS with zsh
