@@ -17,11 +17,12 @@ system_prompt='You are a shell command assistant for macOS/zsh.
 The user will describe what they want to do in the terminal in their own environment.
 If the request is clear, populate "command" with the shell command they should run.
 If the request is ambiguous or unclear, populate "clarification" with a short question asking what you need to know.
-Only one field should be non-empty.'
+Only one field should be non-empty.
+Unless specified otherwise, the user refers to the current directory as the context for commands.'
 
 json_schema='{"type":"object","properties":{"command":{"type":"string"},"clarification":{"type":"string"}},"additionalProperties":false}'
 
-response=$(claude --model claude-haiku-4-5-20251001 --system-prompt "$system_prompt" --json-schema "$json_schema" --output-format json -p "User request: ${user_prompt}" 2>/dev/null)
+response=$(claude --model claude-haiku-4-5-20251001 --system-prompt "$system_prompt" --json-schema "$json_schema" --output-format json --tools "" -p "User request: ${user_prompt}" 2>/dev/null)
 
 if [[ -z "$response" ]]; then
   echo "cdo: no response returned" >&2
