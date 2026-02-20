@@ -29,9 +29,25 @@ if [[ -z "$response" ]]; then
   exit 1
 fi
 
-# Parse JSON response (structured output guarantees valid, flat JSON)
-cmd=$(printf '%s' "$response" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
-clarification=$(printf '%s' "$response" | sed -n 's/.*"clarification"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+# DEBUG
+echo ""
+printf "%s" "$response"
+echo ""
+
+eval "$(printf '%s' "$response" | python3 -c '
+import sys, json, shlex
+try:
+    data = json.load(sys.stdin).get("structured_output", {})
+
+    # Get values, default to empty string, and strip surrounding whitespace/newlines
+    cmd = str(data.get("command") or "").strip()
+    clarification= str(data.get("clarification") or "").strip()
+
+    print(f"cmd={shlex.quote(cmd)}")
+    print(f"clarification={shlex.quote(clarification)}")
+except Exception:
+    pass
+')"
 
 if [[ -n "$clarification" ]]; then
   echo ""
